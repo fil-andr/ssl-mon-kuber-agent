@@ -26,9 +26,9 @@ spec:
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
             - name: 'VAULT_ENABLED'
-              value: {{ .Values.env.vault_enabled }}
+              value: {{ .Values.env.vault_enabled | quote }}
             - name: 'PROXY_INJECTOR_ENABLED'
-              value: {{ .Values.env.proxy_injector_enabled }}
+              value: {{ .Values.env.proxy_injector_enabled | quote }}
           name: {{ .Values.appName }}
           ports:
             - containerPort: 8080
