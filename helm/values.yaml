@@ -17,8 +17,8 @@ resources:
 
 
 env:
-  vault_enabled: True
-  proxy_injector_enabled: False
+  vault_enabled: "True"
+  proxy_injector_enabled: "False"
 
 
 ingressClass: nginx
