@@ -1,0 +1,6 @@
+apiVersion: v2
+name       : ssl-secret-mon-agent
+description: ssl secret mon agent
+type       : application
+version    : 0.0.6
+appVersion : "0.0.6"

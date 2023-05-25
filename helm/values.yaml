@@ -1,0 +1,26 @@
+appName: mon-app
+
+container:
+  image: 239534/test_python_scrpt
+  tagVersion: 0.0.6
+
+imagePullPolicy: IfNotPresent
+replicaCount: 1
+
+resources:
+  requests:
+    memory: "20Mi"
+    cpu: "100m"
+  limits:
+    memory: "100Mi"
+    cpu: "300m"
+
+
+env:
+  vault_enabled: 'True'
+  proxy_injector_enabled: 'False'
+
+
+ingressClass: nginx
+
+ingress_host: monitor-secret.com

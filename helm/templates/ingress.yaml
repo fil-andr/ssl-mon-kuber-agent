@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.appName }}-ingress
+  namespace: test-app-ns
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingressClass }}
+spec:
+  rules:
+  - host: {{ .Values.ingress_host }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Values.appName }}-svc
+            port:
+              number: 8080
+        path: /vault-cert
+        pathType: Prefix
+      - backend:
+          service:
+            name: {{ .Values.appName }}-svc
+            port:
+              number: 8080
+        path: /proxy-inj-cert
+        pathType: Prefix
