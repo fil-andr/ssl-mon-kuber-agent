@@ -2,8 +2,7 @@ from subprocess import check_output,CalledProcessError
 from datetime import datetime
 import time
 from dateutil import parser
-from flask import request
-from flask import Flask,render_template, request, flash
+from flask import Flask
 import os
 
 vault_enabled = os.environ['VAULT_ENABLED']
