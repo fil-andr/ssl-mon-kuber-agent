@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.appName }}
-  namespace: test-app-ns
 spec:
   selector:
     matchLabels:
@@ -29,6 +28,14 @@ spec:
               value: {{ .Values.env.vault_enabled | quote }}
             - name: 'PROXY_INJECTOR_ENABLED'
               value: {{ .Values.env.proxy_injector_enabled | quote }}
+            - name: 'VAULT_SVC_NAME'
+              value: {{ .Values.env.vault_svc_name | quote }}
+            - name: 'PROXY_INJ_SVC_NAME'
+              value: {{ .Values.env.proxy_inj_svc_name | quote }}
+            - name: 'VAULT_NS'
+              value: {{ .Values.env.vault_ns | quote }}
+            - name: 'PROXY_INJ_NS'
+              value: {{ .Values.env.proxy_inj_ns | quote }}
           name: {{ .Values.appName }}
           ports:
             - containerPort: 8080
