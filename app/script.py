@@ -2,8 +2,7 @@ from subprocess import check_output,CalledProcessError
 from datetime import datetime
 import time
 from dateutil import parser
-from flask import request
-from flask import Flask,render_template, request, flash
+from flask import Flask
 import os
 
 vault_enabled = os.environ['VAULT_ENABLED']
@@ -26,6 +25,8 @@ def vault():
     end_date_seconds = parser.parse(end_date).timestamp()
     now_seconds = int(datetime.now().strftime("%s"))
     days_to_expire = (end_date_seconds - now_seconds) / 24 / 3600
+    if days_to_expire < 0:
+        return str(0)
     return str(int(days_to_expire))
 
 def proxy_inj():
@@ -33,6 +34,8 @@ def proxy_inj():
     end_date_seconds = parser.parse(end_date).timestamp()
     now_seconds = int(datetime.now().strftime("%s"))
     days_to_expire = (end_date_seconds - now_seconds) / 24 / 3600
+    if days_to_expire < 0:
+        return str(0)
     return str(int(days_to_expire))
 
 
